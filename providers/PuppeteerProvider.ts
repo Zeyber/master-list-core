@@ -1,11 +1,6 @@
-import { minimal_args } from "../helpers";
 import { Provider, ProviderOptions } from "./Provider";
 import * as puppeteer from "puppeteer";
-
-const options = {
-  width: 1280,
-  height: 720,
-};
+import { getBrowser } from "./puppeteer.utils";
 
 export class PuppeteerProvider extends Provider {
   browser: puppeteer.Browser;
@@ -29,18 +24,7 @@ export class PuppeteerProvider extends Provider {
   }
 
   newBrowser(): Promise<puppeteer.Browser> {
-    return puppeteer.launch({
-      executablePath: process.env.FACEBOOK_CHROME_PATH,
-      headless: true,
-      args: [
-        ...minimal_args,
-        `--window-size=${options.width},${options.height}`,
-      ],
-      defaultViewport: {
-        width: options.width,
-        height: options.height,
-      },
-    });
+    return getBrowser();
   }
 
   newPage(): Promise<puppeteer.Page> {

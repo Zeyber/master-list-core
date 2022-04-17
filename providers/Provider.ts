@@ -1,7 +1,4 @@
 import { Browser } from "puppeteer";
-import { colours } from "../colors";
-import { DIVIDER } from "../helpers";
-import { CHECKMARK } from "../input";
 
 export interface ProviderOptions {
   delayInit?: number;
@@ -51,36 +48,5 @@ export class Provider {
         reject(e);
       }
     });
-  }
-
-  /**
-   * Print loaded items.
-   */
-  print() {
-    let toPrint: string = "";
-    toPrint += DIVIDER + "\n";
-    if (this.items?.length) {
-      toPrint += `${this.settings.providerName} (${this.items.length})`;
-      this.items.forEach((item) => {
-        toPrint += `\n- ${item}`;
-      });
-    } else {
-      toPrint += this.getCheckedLabel();
-    }
-
-    console.log(toPrint);
-  }
-
-  /**
-   * Get string that shows provider tasks as "done".
-   */
-  getCheckedLabel(name?: string): string {
-    return `${colours.fg.green} [${CHECKMARK}] ${
-      name ?? this.settings.providerName
-    } ${colours.fg.white}`;
-  }
-
-  getName(): string {
-    return this.settings.providerName;
   }
 }

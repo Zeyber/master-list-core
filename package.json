@@ -1,13 +1,12 @@
 {
   "name": "master-list",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "main": "index.ts",
   "scripts": {
-    "start": "ts-node ./main.ts",
-    "start:no-check": "TS_NODE_FILES=true TS_NODE_TRANSPILE_ONLY=true ts-node ./main.ts",
+    "start": "ts-node ./examples/printer/main.ts",
+    "start:no-check": "TS_NODE_FILES=true TS_NODE_TRANSPILE_ONLY=true ts-node ./examples/printer/main.ts",
     "serve": "node ./dist/main.js",
-    "build": "tsc -b --verbose",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc -b --verbose"
   },
   "author": "Caine Rotherham",
   "license": "ISC",

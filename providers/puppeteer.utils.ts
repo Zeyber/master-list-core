@@ -1,14 +1,9 @@
-export const DIVIDER = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
+import * as puppeteer from "puppeteer";
 
-export function convertToDate(dateTime: string | Date): Date {
-  return new Date(new Date(dateTime).toDateString());
-}
-
-export function isToday(date: Date) {
-  return (
-    new Date(date).toLocaleDateString() === new Date().toLocaleDateString()
-  );
-}
+export const puppeteer_options = {
+  width: 1280,
+  height: 720,
+};
 
 export const minimal_args = [
   "--autoplay-policy=user-gesture-required",
@@ -56,3 +51,18 @@ export const minimal_args = [
   "--use-gl=swiftshader",
   "--use-mock-keychain",
 ];
+
+export function getBrowser(): Promise<puppeteer.Browser> {
+  return puppeteer.launch({
+    executablePath: process.env.FACEBOOK_CHROME_PATH,
+    headless: true,
+    args: [
+      ...minimal_args,
+      `--window-size=${puppeteer_options.width},${puppeteer_options.height}`,
+    ],
+    defaultViewport: {
+      width: puppeteer_options.width,
+      height: puppeteer_options.height,
+    },
+  });
+}
