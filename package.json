@@ -1,12 +1,10 @@
 {
   "name": "master-list",
   "version": "0.1.0",
-  "main": "index.ts",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "ts-node ./examples/printer/main.ts",
-    "start:no-check": "TS_NODE_FILES=true TS_NODE_TRANSPILE_ONLY=true ts-node ./examples/printer/main.ts",
-    "serve": "node ./dist/main.js",
-    "build": "tsc -b --verbose"
+    "build": "tsc -b --verbose",
+    "postinstall": "npm run build"
   },
   "author": "Caine Rotherham",
   "license": "ISC",
