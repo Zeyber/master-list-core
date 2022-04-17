@@ -1,0 +1,6 @@
+.credentials
+.env
+node_modules
+package-lock.json
+dist
+.DS_Store
