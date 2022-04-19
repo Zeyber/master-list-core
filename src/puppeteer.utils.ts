@@ -1,4 +1,4 @@
-import { Browser, launch, Page } from "puppeteer";
+import * as puppeteer from "puppeteer";
 
 export const puppeteer_options = {
   width: 1280,
@@ -58,8 +58,8 @@ export const minimal_args = [
 /**
  * Returns a preconfigured browser by calling puppeteer's `launch()` method.
  */
-export function getBrowser(): Promise<Browser> {
-  return launch({
+export function getBrowser(): Promise<puppeteer.Browser> {
+  return puppeteer.launch({
     executablePath: process.env.FACEBOOK_CHROME_PATH,
     headless: true,
     args: [
@@ -78,7 +78,7 @@ export function getBrowser(): Promise<Browser> {
  */
 export async function clickButton(
   text: string,
-  page: Page = this.page
+  page: puppeteer.Page = this.page
 ): Promise<void> {
   await page.waitForXPath(`//button[contains(., '${text}')]`);
   const button = await page.$x(`//button[contains(., '${text}')]`);
@@ -90,7 +90,7 @@ export async function clickButton(
  */
 export async function clickLink(
   text: string,
-  page: Page = this.page
+  page: puppeteer.Page = this.page
 ): Promise<void> {
   await page.waitForXPath(`//a[contains(., '${text}')]`);
   const link = await page.$x(`//a[contains(., '${text}')]`);
