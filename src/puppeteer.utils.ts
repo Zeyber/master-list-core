@@ -1,10 +1,13 @@
-import * as puppeteer from "puppeteer";
+import { Browser, launch, Page } from "puppeteer";
 
 export const puppeteer_options = {
   width: 1280,
   height: 720,
 };
 
+/**
+ * Arguments to reduce usage of puppeteer instances.
+ */
 export const minimal_args = [
   "--autoplay-policy=user-gesture-required",
   "--disable-accelerated-2d-canvas",
@@ -52,8 +55,11 @@ export const minimal_args = [
   "--use-mock-keychain",
 ];
 
-export function getBrowser(): Promise<puppeteer.Browser> {
-  return puppeteer.launch({
+/**
+ * Returns a preconfigured browser by calling puppeteer's `launch()` method.
+ */
+export function getBrowser(): Promise<Browser> {
+  return launch({
     executablePath: process.env.FACEBOOK_CHROME_PATH,
     headless: true,
     args: [
@@ -65,4 +71,28 @@ export function getBrowser(): Promise<puppeteer.Browser> {
       height: puppeteer_options.height,
     },
   });
+}
+
+/**
+ * Helper function to click a button element containing given text.
+ */
+export async function clickButton(
+  text: string,
+  page: Page = this.page
+): Promise<void> {
+  await page.waitForXPath(`//button[contains(., '${text}')]`);
+  const button = await page.$x(`//button[contains(., '${text}')]`);
+  return button[0].click();
+}
+
+/**
+ * Helper function to click a link element containing given text.
+ */
+export async function clickLink(
+  text: string,
+  page: Page = this.page
+): Promise<void> {
+  await page.waitForXPath(`//a[contains(., '${text}')]`);
+  const link = await page.$x(`//a[contains(., '${text}')]`);
+  return link[0].click();
 }

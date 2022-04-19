@@ -1,20 +1,26 @@
 import { Browser } from "puppeteer";
 
 export interface ProviderOptions {
-  delayInit?: number;
-  refreshInterval?: number;
+  /**
+   * How the given provider should be referred to.
+   */
   providerName?: string;
+  /**
+   * Puppeteer Browser instance to be reused
+   */
   browser?: Browser;
-  useIsolatedBrowser?: boolean;
-}
-
-export interface ProviderConfig {
-  [key: string]: Provider;
 }
 
 export class Provider {
-  items: string[] = [];
+  /**
+   * Persisted settings from constructer call.
+   */
   settings: ProviderOptions | any;
+
+  /**
+   *  Data loaded from `reload()` call.
+   */
+  items: string[] = [];
 
   constructor(public options: ProviderOptions) {
     this.settings = options;
@@ -22,14 +28,16 @@ export class Provider {
 
   /**
    * Setup provider to receive data.
+   *
+   * Example: Log into an API; Load a webpage with puppeteer;
    */
-  initialize(fn: Function = () => {}, delayInit?: number): Promise<boolean> {
+  initialize(fn: Function = () => {}): Promise<boolean> {
     return new Promise((resolve, reject) => {
       try {
         setTimeout(async () => {
           await fn();
           resolve(true);
-        }, delayInit ?? 0);
+        }, 0);
       } catch (e: any) {
         reject(e);
       }
@@ -38,6 +46,8 @@ export class Provider {
 
   /**
    * Receive new data and write to items array.
+   *
+   * Example: Get data from an API call; Read a webpage's DOM for changes;
    */
   reload(fn: Function = () => {}): Promise<void> {
     return new Promise(async (resolve, reject) => {

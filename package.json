@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc -b --verbose",
+    "build": "tsc",
     "postinstall": "npm run build"
   },
   "author": "Caine Rotherham",
