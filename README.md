@@ -18,6 +18,8 @@ Master List is a node-based solution that runs on any machine within the command
 
 Using Master List providers for tracking on a Rasberry Pi Zero connected to a monitor.
 
+![2022-04-20 21 05 47](https://user-images.githubusercontent.com/11735817/164304580-009d42ce-aa6a-40be-bf29-d6b7a01cf217.jpg)
+
 See printer repo: https://github.com/Zeyber/master-list-printer
 
 ## Providers
