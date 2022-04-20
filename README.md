@@ -26,4 +26,9 @@ Providers are third-party wrappers that provide a link between an API or website
 
 ### Examples
 
-- Github Issue Tracking: https://gihub.com/Zeyber/master-list-github-provider
+- [AnkiWeb Flashcard Reminder](https://www.npmjs.com/package/@zeyber/master-list-anki-provider) - Informs when and which flashcards are due for revision.
+- [Facebook Messenger Unreads](https://www.npmjs.com/package/@zeyber/master-list-facebook-provider) - See which contacts have unread messages.
+- [Github Issue Tracking](https://www.npmjs.com/package/@zeyber/master-list-github-provider) - See which open issues are currently assigned to you.
+- [Google Gmail/Calendar/Tasks](https://www.npmjs.com/package/@zeyber/master-list-google-provider) - Check unread emails, upcoming events or due tasks.
+- [Instagram Unreads](https://www.npmjs.com/package/@zeyber/master-list-instagram-provider) - See which contacts have unread messages.
+- [System Details](https://www.npmjs.com/package/@zeyber/master-list-system-provider) - Check system details like time, date, CPU and RAM usage.
