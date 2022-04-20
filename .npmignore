@@ -1,5 +1,6 @@
 .credentials
 .env
 node_modules
-dist
+**.ts
+!**.d.ts
 .DS_Store

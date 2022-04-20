@@ -1,13 +1,14 @@
 {
-  "name": "master-list",
+  "name": "@master-list/core",
   "version": "0.1.0",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "postinstall": "npm run build"
+    "prepublish": "npm run build"
   },
   "author": "Caine Rotherham",
   "license": "ISC",
+  "types": "dist/index.d.ts",
   "dependencies": {
     "dotenv": "^8.2.0",
     "puppeteer": "^13.0.0"
