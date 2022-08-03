@@ -50,12 +50,13 @@ export class Provider {
    * Example: Get data from an API call; Read a webpage's DOM for changes;
    */
   reload(fn: Function = () => {}): Promise<void> {
-    return new Promise(async (resolve, reject) => {
+    return new Promise(async (resolve) => {
       try {
         this.items = await fn();
         resolve();
       } catch (e: any) {
-        reject(e);
+        // Suppress error to keep application running
+        resolve();
       }
     });
   }
