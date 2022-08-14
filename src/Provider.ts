@@ -1,14 +1,8 @@
-import { Browser } from "puppeteer";
-
 export interface ProviderOptions {
   /**
    * How the given provider should be referred to.
    */
   providerName?: string;
-  /**
-   * Puppeteer Browser instance to be reused
-   */
-  browser?: Browser;
 }
 
 export class Provider {

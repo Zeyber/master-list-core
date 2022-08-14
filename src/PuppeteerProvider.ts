@@ -16,7 +16,7 @@ export class PuppeteerProvider extends Provider {
   browser: Browser;
   page: Page;
 
-  constructor(options?: PuppeteerProviderOptions) {
+  constructor(public options: PuppeteerProviderOptions) {
     super(options);
   }
 
